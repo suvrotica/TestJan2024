@@ -4,16 +4,11 @@ import { createSlug } from '$lib/utility-functions';
 export const prerender = false;
 import { db } from '@vercel/postgres';
 
-const client = await db.connect();
-/**
- * @param {string | number | boolean | null | undefined} title
- * @param {string} slug
- * @param {string | number | boolean | null | undefined} content
- * @param {string | number | boolean | null | undefined} imageUrl
- * @param {string | number | boolean | null | undefined} tagSet
- */
+// @ts-ignore
 async function createBlogPost(title, slug, content, imageUrl, tagSet) {
 	try {
+		const client = await db.connect();
+
 		await client.sql`
             CREATE TABLE IF NOT EXISTS blog_posts (
                 id SERIAL PRIMARY KEY,
