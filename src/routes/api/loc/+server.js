@@ -8,5 +8,6 @@ export async function GET({ request }) {
 	const referrer = request.headers.get('referer') || 'unknown';
 	const cookies = request.headers.get('cookie') || 'unknown';
 	const contentType = request.headers.get('content-type') || 'unknown';
+
 	return json({ ip, city, userAgent, language, referrer, cookies, contentType });
 }

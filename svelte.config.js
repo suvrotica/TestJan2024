@@ -1,3 +1,4 @@
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import adapter from '@sveltejs/adapter-vercel';
 
 import preprocess from 'svelte-preprocess';
@@ -5,9 +6,12 @@ import preprocess from 'svelte-preprocess';
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
-	preprocess: preprocess({
-		preserve: ['ld+json']
-	}),
+	preprocess: [
+		preprocess({
+			preserve: ['ld+json']
+		}),
+		vitePreprocess({})
+	],
 
 	kit: {
 		adapter: adapter({
